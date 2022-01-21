@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JS Forms Test Page</title>
+</head>
+
+<script src="../src/index.js"></script>
+
+<style type="text/css">
+  html, body {
+    font-size: 13px;
+  }
+  h4 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+  input, textarea, select {
+    margin-bottom: 1em;
+  }
+  .container {
+    margin: 1rem 1rem;
+    padding: 1rem 1rem;
+    border: 2px dotted #ccc;
+  }
+  .output {
+    background: #efefef;
+    margin-top: 1rem;
+    padding: 0.4rem 1rem;
+  }
+</style>
+
+<body>
+  <script type="text/javascript">
+    const TEST = [
+      {
+        name: "text input",
+        html: `<input type='text'>`,
+      },
+      {
+        name: "number input",
+        html: `<input type='number'>`,
+      },
+      {
+        name: "date input",
+        html: `<input type='date'>`,
+      },
+      {
+        name: "time input",
+        html: `<input type='time'>`,
+      },
+      {
+        name: "checkbox single",
+        html: `<input type='checkbox' data-${SERIALIZED}='123'>`,
+      },
+      {
+        name: "checkbox multiple",
+        html: `
+          <input type='checkbox' data-${SERIALIZED}='1'>
+          <input type='checkbox' data-${SERIALIZED}='2'>
+          <input type='checkbox' data-${SERIALIZED}='3'>
+        `,
+      },
+      {
+        name: "boolean radio",
+        html:`
+          <input type='radio' data-${SERIALIZED}='true'>
+          <input type='radio' data-${SERIALIZED}='false'>
+        `,
+      },
+      {
+        name: "string radio",
+        html:`
+          <input type='radio' data-${SERIALIZED}='"foo"'>
+          <input type='radio' data-${SERIALIZED}='"bar"'>
+        `,
+      },
+      {
+        name: "object radio",
+        html:`
+          <input type='radio' data-${SERIALIZED}='{"foo": 234}'>
+          <input type='radio' data-${SERIALIZED}='{"foo": 567}'>
+        `,
+      },
+      {
+        name: "select",
+        html: `
+          <select name="select">
+            <option data-${SERIALIZED}="null">null</option>
+            <option data-${SERIALIZED}="123">number</option>
+            <option data-${SERIALIZED}="false">boolean</option>
+            <option data-${SERIALIZED}='"foo"'>string</option>
+            <option data-${SERIALIZED}='"2018-01-01"'>date</option>
+          </select>
+        `,
+      },
+      {
+        name: "select multiple",
+        html: `
+          <select name="select" multiple>
+            <option data-${SERIALIZED}="null">null</option>
+            <option data-${SERIALIZED}="123">number</option>
+            <option data-${SERIALIZED}="false">boolean</option>
+            <option data-${SERIALIZED}='"foo"'>string</option>
+            <option data-${SERIALIZED}='"2018-01-01"'>date</option>
+          </select>
+        `,
+      },
+      {
+        name: "file single",
+        html: `<input type='file'>`,
+      },
+      {
+        name: "file multiple",
+        html: `<input type='file' multiple>`,
+      },
+      {
+        name: "email single",
+        html: `<input type='email'>`,
+      },
+      {
+        name: "email multiple",
+        html: `<input type='email' multiple>`,
+      },
+    ]
+  </script>
+
+
+  <script type="text/javascript">
+    let idIncr = 0
+    TEST.forEach(spec => {
+      const container = document.createElement('div')
+      container.classList.add('container')
+      const output = document.createElement('pre')
+      output.classList.add('output')
+      const title = document.createElement('h4')
+      title.innerText = spec.name
+      const html = document.createElement('div')
+      html.innerHTML = spec.html
+
+      html.querySelectorAll('[type=checkbox], [type=radio]').forEach(input => {
+        input.id = `auto-id-${idIncr++}`
+        input.name = spec.name.replace(' ', '-')
+        const label = document.createElement('label')
+        label.setAttribute('for', input.id)
+        label.innerText = input.dataset.serialized
+        input.insertAdjacentElement('afterEnd', label)
+      })
+
+      function refreshOutput(el) {
+        output.innerText = dump(get(el))
+      }
+
+      html.querySelectorAll('select, input, textarea').forEach(el => {
+        el.addEventListener('input', (e) => refreshOutput(e.target))
+        refreshOutput(el)
+      })
+
+      container.appendChild(title)
+      container.appendChild(html)
+      container.appendChild(output)
+
+      document.body.appendChild(container)
+    })
+  </script>
+</body>
+</html>
