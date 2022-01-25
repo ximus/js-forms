@@ -2,8 +2,8 @@
   "name": "js-forms",
   "version": "1.0.0",
   "description": "data exchange between javscript and HTML forms simplified",
-  "main": "src/index.js",
-  "author": "max@ximus.xyz",
+  "main": "src/index.ts",
+  "author": "m@ximus.xyz",
   "license": "MIT",
   "private": false,
   "devDependencies": {
@@ -17,5 +17,9 @@
   },
   "scripts": {
     "test": "jest"
+  },
+  "dependencies": {
+    "@types/web": "^0.0.50",
+    "typescript": "^4.5.5"
   }
 }

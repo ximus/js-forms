@@ -16,6 +16,11 @@
     esutils "^2.0.2"
     js-tokens "^3.0.0"
 
+"@types/web@^0.0.50":
+  version "0.0.50"
+  resolved "https://registry.yarnpkg.com/@types/web/-/web-0.0.50.tgz#db2a20af31c415a92ce83ca6cdf060bdbdd3c5a5"
+  integrity sha512-WxV9pLn1XOVMmdflpft88cIXkhl/vi9k7xWEcFWrporpv4/wJq1W/MRyxJbP1npAZqaUNIIw0cH3/3Brgssyjw==
+
 "@webassemblyjs/ast@1.5.13":
   version "1.5.13"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.5.13.tgz#81155a570bd5803a30ec31436bc2c9c0ede38f25"
@@ -4451,6 +4456,11 @@ type-check@~0.3.2:
 typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
+
+typescript@^4.5.5:
+  version "4.5.5"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.5.5.tgz#d8c953832d28924a9e3d37c73d729c846c5896f3"
+  integrity sha512-TCTIul70LyWe6IJWT8QSYeA54WQe8EjQFU4wY52Fasj5UKx88LNYKCgBEHcOMOrFF1rKGbD8v/xcNWVUq9SymA==
 
 uglify-es@^3.3.4:
   version "3.3.9"
