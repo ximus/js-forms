@@ -2,10 +2,11 @@
   "name": "js-forms",
   "version": "1.0.0",
   "description": "data exchange between javscript and HTML forms simplified",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
   "author": "m@ximus.xyz",
+  "type": "module",
   "license": "MIT",
-  "private": false,
+  "private": true,
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-jest": "^23.4.0",
@@ -16,7 +17,8 @@
     "webpack-cli": "^3.1.0"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "postinstall": "tsc"
   },
   "dependencies": {
     "@types/web": "^0.0.50",

@@ -1,4 +1,6 @@
-import { isBlank, compact } from "./util";
+// @ts-nocheck
+
+import { isBlank, compact } from "./util.js";
 
 export const SERIALIZED = "serialized";
 export const DATA_SERIALIZED = `data-${SERIALIZED}`;
@@ -9,7 +11,7 @@ export const dump = (val) => {
     val = [...val].map((el) => dump(el));
   }
   if (val && val.constructor === File) {
-    val = file.path;
+    val = val.name;
   }
   return JSON.stringify(val);
 };
