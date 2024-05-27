@@ -17,8 +17,8 @@
     "webpack-cli": "^3.1.0"
   },
   "scripts": {
-    "test": "jest",
-    "postinstall": "tsc"
+    "test": "npx jest",
+    "postinstall": "npx tsc"
   },
   "dependencies": {
     "@types/web": "^0.0.50",
